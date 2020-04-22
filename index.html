@@ -625,13 +625,13 @@
       if (CONFIG.page.isPost) { // Is article page
         var title = document.querySelector('.post-title').innerText.trim();
         var doc = articles.doc(title);
-        var increaseCount = CONFIG.hostname === location.hostname;
-        if (localStorage.getItem(title)) {
-          increaseCount = false;
-        } else {
+        var increaseCount = true
+        //if (localStorage.getItem(title)) {
+        //  increaseCount = false;
+        //} else {
           // Mark as visited
           localStorage.setItem(title, true);
-        }
+        //}
         getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
       } else if (CONFIG.page.isHome) { // Is index page
         var promises = [...document.querySelectorAll('.post-title')].map(element => {
