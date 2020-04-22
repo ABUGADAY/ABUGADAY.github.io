@@ -361,26 +361,13 @@
 
 
 
-<script  src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
-
-<script  src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
-<script  src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBV0-2FZGwLqWG02pXUdtOB0LfOgImoWTw",
-    authDomain: "myblog-b6c51.firebaseapp.com",
-    databaseURL: "https://myblog-b6c51.firebaseio.com",
-    projectId: "myblog-b6c51",
-    storageBucket: "myblog-b6c51.appspot.com",
-    messagingSenderId: "786432610054",
-    appId: "1:786432610054:web:9f2860a0be365d51539887",
-    measurementId: "G-XDST49GHN5"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey   : 'AIzaSyBV0-2FZGwLqWG02pXUdtOB0LfOgImoWTw',
+      projectId: 'myblog-b6c51'
+    });
 
     function getCount(doc, increaseCount) {
       // IncreaseCount will be false when not in article page
