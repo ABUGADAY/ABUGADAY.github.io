@@ -634,11 +634,17 @@
 
   <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
   <script>
     firebase.initializeApp({
       apiKey   : 'AIzaSyBV0-2FZGwLqWG02pXUdtOB0LfOgImoWTw',
-      projectId: 'myblog-b6c51'
+      projectId: 'myblog-b6c51',
+      measurementId : 'G-XDST49GHN5',
+      appId : '1:786432610054:web:9f2860a0be365d51539887'
     });
+
+    firebase.analytics();
 
     function getCount(doc, increaseCount) {
       // IncreaseCount will be false when not in article page
