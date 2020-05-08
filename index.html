@@ -146,6 +146,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://https//abugaday.github.io/2020/05/08/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95%E8%A7%A3-Majority-Element/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Das Feng || 冯礼达">
+      <meta itemprop="description" content="编程博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Das'Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/08/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95%E8%A7%A3-Majority-Element/" class="post-title-link" itemprop="url">摩尔投票法解 Majority Element</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-08 09:02:19 / Modified: 09:03:20" itemprop="dateCreated datePublished" datetime="2020-05-08T09:02:19+08:00">2020-05-08</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/08/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95%E8%A7%A3-Majority-Element/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/08/摩尔投票法解-Majority-Element/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h2><p>给定一个大小为 <em>n</em> 的数组，找到其中的众数。众数是指在数组中出现次数<strong>大于</strong> <code>⌊ n/2 ⌋</code> 的元素。</p>
+<p>你可以假设数组是非空的，并且给定的数组总是存在众数。</p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>首先题干给出两个限定：</p>
+<p>1.数组<strong>非空</strong></p>
+<p>2.总是<strong>存在</strong>众数</p>
+<p>那么我们可以假定有一个数出现的次数<strong>必定</strong>在数组中出现次数<strong>大于</strong> <code>⌊ n/2 ⌋</code></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> major = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(major == num) count++;</span><br><span class="line">            <span class="keyword">else</span> count--;</span><br><span class="line">            <span class="keyword">if</span>(count &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                major = num;</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> major;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>摩尔投票法思想</p>
+<blockquote>
+<p>每次从数组中选择两个不相等的元素进行相互抵消(删除)，最后剩下的一个元素或几个相同的元素就是出现次数大于n/2的元素</p>
+</blockquote>
+<p>很简单的一种<strong>是敌非友</strong>的判断方式。我们已经可以假定众数存在，那么它必将只有一个，那么数组中的元素只存在两种情况 == 众数 || &lt;&gt; 众数</p>
+<p>一开始我也存在这么个疑问，如果我出现了众数后面连续几个非众数，那么会不会出现错判的情况呢？</p>
+<p>逻辑推演一下[1,1,2,2,2,1,1],当程序发现count == 0 时，num已经是 nums[4] ：2，剩下还有两个 1，那么得出众数还是1.其实从总数也能得出我们假设众数个数是 n 数组元素个数是 m</p>
+<p>首先 1/2 &lt; n/m</p>
+<p>可得 1/2 &lt; n/m &lt; (n-a) /(m-2a)</p>
+<p>总是成立</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://https//abugaday.github.io/2020/05/04/%E4%BA%94%E5%88%86%E9%92%9F%E5%AD%A6%E4%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -760,12 +857,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
