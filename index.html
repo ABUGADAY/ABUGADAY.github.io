@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Das'Blog - 偶尔写点</title><meta name="description" content="编程博客"><meta name="author" content="Das Feng || 冯礼达"><meta name="copyright" content="Das Feng || 冯礼达"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/batman_gif_2.gif"><link rel="canonical" href="https://abugaday.github.io/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="Das'Blog"><meta property="og:url" content="https://abugaday.github.io/"><meta property="og:site_name" content="Das'Blog"><meta property="og:description" content="编程博客"><meta property="og:image" content="https://abugaday.github.io/img/batman_gif_2.gif"><meta property="article:published_time" content="2021-06-30T04:43:33.897Z"><meta property="article:modified_time" content="2021-06-30T04:43:33.897Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: true,
+  isSidebar: false
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/batman_gif_2.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">18</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="code-close" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://images.unsplash.com/photo-1589884629000-60c572c6ba7a?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2100&amp;q=80)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Das'Blog</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">Das'Blog</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/abugaday" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dasvenxx@gmail.com" target="_blank" title="Email"><i class="fa fa-envelope"></i></a><a class="social-icon" href="https://twitter.com/named_Das" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/06/30/Java-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%91%BD%E5%90%8D/" title="Java 中常见的命名">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1532153354457-5fbe1a3bb0b4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 中常见的命名"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/30/Java-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%91%BD%E5%90%8D/" title="Java 中常见的命名">Java 中常见的命名</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2021-06-30 00:09:04"><i class="far fa-calendar-alt"></i>2021-06-30</time></div><div class="content">Java 中常见的命名约束
+本文指出的是 Java 常见命名中比较统一的约定俗成的词缀
+
+
+
+
+词缀
+含义
+来源
+
+
+
+Abstracr / Base
+抽象
+JDK
+
+
+Enum /Type
+枚举
+JDK
+
+
+Utils
+工具
+JDK
+
+
+Exception
+异常
+JDK
+
+
+Impl
+接口实现
+JDK
+
+
+DO（ Data Object）
+数据对象，与数据库表结构一一对应，通过DAO层向上传输数据源对象
+领域模型相
+
+
+DTO（ Data Transfer Object）
+数据传输对象，Service或Manager向外传输的对象
+领域模型相
+
+
+AO（ Application Object）
+应用对象，在Web层与Service层之间抽象的复用对象模型
+领域模型相
+
+
+BO（ Business Object）
+业务对象，由Service层输出的封装业务逻辑的对象
+领域模型相
+
+
+VO（ View Object）
+显示层对象，通常是Web向模板渲染引擎层传输的对象
+领域模型相
+
+
+POJO（ Plain Ordinary Java Object）
+只有setter/getter/to ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%8D%E7%BC%80/" title="设计模式中常用的词缀">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1591803026220-6385999e82b4?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式中常用的词缀"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%8D%E7%BC%80/" title="设计模式中常用的词缀">设计模式中常用的词缀</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2021-06-30 00:07:42"><i class="far fa-calendar-alt"></i>2021-06-30</time></div><div class="content">设计模式中常用的词缀
+本文旨在声明常见设计模式中常用的词缀，望文生义，快速反应是用了什么设计模式
+
+
+
+
+词缀
+含义
+来源
+
+
+
+Observer
+观察者
+观察者模式
+
+
+Notify
+通知
+观察者模式
+
+
+Factory
+工厂
+工厂模式
+
+
+Singleton
+单例
+单例模式
+
+
+Adapter
+适配器
+适配器模式
+
+
+Command
+命令
+命令模式
+
+
+Decorator
+装饰器
+装饰者模式
+
+
+Facade
+门面
+外观模式/门面模式
+
+
+Concrete
+具体
+模版方法模式
+
+
+Abstract
+抽象
+模版方法模式
+
+
+Hook
+钩子
+模版方法模式
+
+
+State
+状态
+状态模式
+
+
+Builder
+建造者
+建造者模式
+
+
+Cloneable
+可克隆
+原型模式
+
+
+Proxy
+代理
+代理模式
+
+
+Iterator
+迭代器
+迭代器模式
+
+
+Repository
+存放处
+迭代器模式
+
+
+Expression
+表达式
+解释器模式
+
+
+Chain
+链条
+责任链模式
+
+
+Visitor
+访问者
+访问者模式
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/05/Java8/" title="Java8">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1590468243403-dedf605cde71?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2104&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java8"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/05/Java8/" title="Java8">Java8</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-08-05 13:18:35"><i class="far fa-calendar-alt"></i>2020-08-05</time></div><div class="content"></div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/07/14/Spring-AOP/" title="Spring-AOP">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1589237370813-aedda7b996f1?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2100&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring-AOP"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/07/14/Spring-AOP/" title="Spring-AOP">Spring-AOP</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-14 22:24:59"><i class="far fa-calendar-alt"></i>2020-07-14</time></div><div class="content">概念“横切”的技术，剖解开封装的对象内部，并将那些影响了多个类的公共行为封装到一个可重用的模块，并将其命名为”Aspect”,即所谓”切面”,简单说就是那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块之间的耦合度，并有利于未来的可操作性和可维护性
+使用”横切”技术，AOP把软件系统分为两个部分:核心关注点和横切关注点。业务处理的主要流程时核心关注点，与之关系不大的部分是横切关注点。横切关注点的一个特点是，他们经常发生在核心关注点的多处，而各处基本相似，比如权限，日志、事务。AOP的作用在于分离系统中的各种关注点，将核心关注点和横切关注点分离开来
+AOP 主要应用场景有：
+
+Authentication 权限
+Caching 缓存
+Context passing 内容传递
+Error handing 错误处理
+Lazy loading 懒加载
+Debugging 调试
+Logging, tracing,profiling and monitoring 记录追踪 优化 校准
+Performance optimization 性能优化
+Persis ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/07/10/Spring-IOC/" title="Spring IOC">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1589237370813-aedda7b996f1?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2100&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring IOC"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/07/10/Spring-IOC/" title="Spring IOC">Spring IOC</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-10 12:57:01"><i class="far fa-calendar-alt"></i>2020-07-10</time></div><div class="content">概念Spring 通过一个配置文件描述Bean 及Bean 之间的依赖关系，利用Java 语言的反射功能实例化Bean 并建立 Bean 之间的依赖关系。Spring 的 IoC 容器在完成这些底层工作的基础上，还提供了 Bean 实例缓存、生命筑起管理、Bean实例代理、时间发布、资源装载等高级服务
+Spring 容器高层视图Spring 启动时读取应用程序提供的 Bean 配置信息，并在 Spring 容器中生成一份相应的 Bean配置注册表，然后根据这张注册表实例化Bean，装配好Bean之间的依赖关系，为上层应用提供准备就绪的运行环境。其中Bean缓存池为HashMap 实现
+
+
+IOC 容器实现BeanFactory-框架基础设施BeanFactory 时 Spring 框架的基础设施，面向Spring 本身；ApplicationContext 面向使用Spring框架的开发者，几乎所有的应用场合我们都直接使用 ApplicationContext 而非底层的BeanFactory
+
+BeanDefinitionRegistry 注册表Spring 配置文件中每一个节点和元 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/07/09/Spring%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Spring">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1590681460497-500cb5a9bef7?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/07/09/Spring%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Spring">Spring</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-09 21:49:48"><i class="far fa-calendar-alt"></i>2020-07-09</time></div><div class="content">特点轻量
+从大小与开销两方面而言Spring 都是轻量的。完整的Spring框架可以在一个大小只有1M多的JAR文件里发布，并且Spring 所需的处理开销也是微不足道的
+Spring 是非侵入式的，典型的，Spring应用中的对象不依赖于Spring 特定类
+
+控制反转
+Spring 通过一种叫做控制反转IOC的技术促进了低耦合
+当应用了IOC ，一个对象依赖的其他对象会通过被动的方式传递进来，而不是这个对象自己创建或者查找依赖对象
+
+面向切面
+Spring 支持面向切面的编程，并且把应用业务逻辑和系统服务分开
+
+容器
+Spring 包含并管理应用对象的配置和生命周期，在这个意义上它是一种容器，你可以配置你的每个bean如何被创建–基于一个可配置原型，你的bean可以创建一个单独的实例或者每次需要时都生成一个新的实例–以及它们是如何相互关联的
+
+框架
+Spring 可以将简单的组件配置，组合成复杂的应用
+在Spring中，应用对象被声明式地组合，典型的是一个XML文件里
+Spring 也提供可很多基础功能（事务管理、持久化框架集成等），将应用逻辑的开发留给开发者
+
+常用模块核心容器
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/07/09/Zookeeper%E9%9D%A2%E8%AF%95/" title="Zookeeper">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1532153354457-5fbe1a3bb0b4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Zookeeper"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/07/09/Zookeeper%E9%9D%A2%E8%AF%95/" title="Zookeeper">Zookeeper</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-09 12:38:32"><i class="far fa-calendar-alt"></i>2020-07-09</time></div><div class="content">概念
+Zookeeper 是一个分布式协调服务，可用于服务发现，分布式锁，分布式领导选举，配置管理等
+
+Zookeeper 提供了一个类似与 Linux 文件系统的树形结构，同时提供了对于每个节点的监控与通知机制
+
+
+
+
+ZAB 协议事务编号 Zxid （事务请求计数器 + epoch）
+低32位：是一个简单的单调递增的计数器，针对客户端每一个事务请求，计数器+1
+高32位：代表 Leader 周期 epoch 的编号，每当选一个新的 Leader 服务器，就会从这个 Leader 服务器上取出本地日志中最大事务的 Zxid，并从中读取 epoch 值，然后 +1 作为新的 epoch，并将低32位归零
+
+模式
+恢复模式（选主）
+广播模式（同步）
+
+四个阶段ZAB 提交事务不像 2PC 一样需要全部follwer 都 ACK ，只需要得到超过半数的节点的ACK 就可以了
+
+Leader election （选举阶段-选出准 Leader）
+节点在一开始都处于选举阶段，只要有一个节点得到超半数节点的票数，它就可以当选准 Leader。 只要到达广播阶段（Broadcast）准 Leade ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/07/02/%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F/" title="日志的简单门面模式分析">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1591803026220-6385999e82b4?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="日志的简单门面模式分析"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/07/02/%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F/" title="日志的简单门面模式分析">日志的简单门面模式分析</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-07-02 20:37:58"><i class="far fa-calendar-alt"></i>2020-07-02</time></div><div class="content"></div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/06/23/%E4%BA%94%E5%88%86%E9%92%9F%E5%AD%A6%E4%BC%9A%E6%9E%84%E5%BB%BA%E5%99%A8%E6%A8%A1%E5%BC%8F/" title="五分钟学会构建器模式">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1490535004195-099bc723fa1f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2380&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="五分钟学会构建器模式"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/06/23/%E4%BA%94%E5%88%86%E9%92%9F%E5%AD%A6%E4%BC%9A%E6%9E%84%E5%BB%BA%E5%99%A8%E6%A8%A1%E5%BC%8F/" title="五分钟学会构建器模式">五分钟学会构建器模式</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-06-23 00:06:58"><i class="far fa-calendar-alt"></i>2020-06-23</time></div><div class="content"></div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/06/23/%E4%BA%94%E5%88%86%E9%92%9F%E5%AD%A6%E4%BC%9A%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="五分钟学会工厂模式">     <img class="post_bg" data-src="https://images.unsplash.com/photo-1560350894-68244ac04656?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2100&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="五分钟学会工厂模式"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/06/23/%E4%BA%94%E5%88%86%E9%92%9F%E5%AD%A6%E4%BC%9A%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="五分钟学会工厂模式">五分钟学会工厂模式</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-06-23 00:05:58"><i class="far fa-calendar-alt"></i>2020-06-23</time></div><div class="content"></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/batman_gif_2.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Das Feng || 冯礼达</div><div class="author-info__description">编程博客</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">Articles</div><div class="length_num">18</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">Tags</div><div class="length_num">9</div></a></div></div><div class="card-info-bookmark is-center"><button class="button--animated" id="bookmark-it" title="Bookmark"><i class="fas fa-bookmark"></i><span>Bookmark</span></button></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/abugaday" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dasvenxx@gmail.com" target="_blank" title="Email"><i class="fa fa-envelope"></i></a><a class="social-icon" href="https://twitter.com/named_Das" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">🌝闭关修炼中...</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a href="/2021/06/30/Java-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%91%BD%E5%90%8D/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://images.unsplash.com/photo-1532153354457-5fbe1a3bb0b4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" title="Java 中常见的命名" alt="Java 中常见的命名"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2021/06/30/Java-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%91%BD%E5%90%8D/" title="Java 中常见的命名">Java 中常见的命名</div><time class="aside-post_meta post-meta__date" title="Created 2021-06-30 00:09:04">2021-06-30</time></div></a></div><div class="aside-recent-post"><a href="/2021/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%8D%E7%BC%80/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://images.unsplash.com/photo-1591803026220-6385999e82b4?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max" onerror="this.onerror=null;this.src='/img/404.jpg'" title="设计模式中常用的词缀" alt="设计模式中常用的词缀"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2021/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%8D%E7%BC%80/" title="设计模式中常用的词缀">设计模式中常用的词缀</div><time class="aside-post_meta post-meta__date" title="Created 2021-06-30 00:07:42">2021-06-30</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/05/Java8/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://images.unsplash.com/photo-1590468243403-dedf605cde71?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2104&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" title="Java8" alt="Java8"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/05/Java8/" title="Java8">Java8</div><time class="aside-post_meta post-meta__date" title="Created 2020-08-05 13:18:35">2020-08-05</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/14/Spring-AOP/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://images.unsplash.com/photo-1589237370813-aedda7b996f1?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2100&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" title="Spring-AOP" alt="Spring-AOP"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/14/Spring-AOP/" title="Spring-AOP">Spring-AOP</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-14 22:24:59">2020-07-14</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/10/Spring-IOC/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://images.unsplash.com/photo-1589237370813-aedda7b996f1?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2100&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" title="Spring IOC" alt="Spring IOC"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/10/Spring-IOC/" title="Spring IOC">Spring IOC</div><time class="aside-post_meta post-meta__date" title="Created 2020-07-10 12:57:01">2020-07-10</time></div></a></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Design-Patterns/" style="font-size: 22px; color: #99a9bf">Design Patterns</a> <a href="/tags/algorithm/" style="font-size: 16px; color: #999">algorithm</a> <a href="/tags/%E5%91%BD%E5%90%8D/" style="font-size: 19px; color: #99a1ac">命名</a> <a href="/tags/%E6%97%A5%E5%B8%B8%E9%97%AE%E9%A2%98/" style="font-size: 16px; color: #999">日常问题</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%AE%9E%E5%BD%95/" style="font-size: 22px; color: #99a9bf">编程实录</a> <a href="/tags/%E8%AE%A1%E5%88%92/" style="font-size: 16px; color: #999">计划</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 16px; color: #999">设计模式</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 22px; color: #99a9bf">面试</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 19px; color: #99a1ac">面试题</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">June 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">August 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">July 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/06/"><span class="card-archive-list-date">June 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">May 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/01/"><span class="card-archive-list-date">January 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/05/"><span class="card-archive-list-date">May 2018</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/01/"><span class="card-archive-list-date">January 2018</span><span class="card-archive-list-count">4</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">Article :</div><div class="webinfo-article-count">18</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">UV :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">PV :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Das Feng || 冯礼达</div><div class="framework-info"><span>Driven </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button class="translate_chn_to_cht" id="translateLink" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="Setting"><i class="fas fa-cog"></i></button><button id="go-up" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var subtitleEffect = true
+if (subtitleEffect) { 
+  var typed = new Typed("#subtitle", {
+    strings: "你写的每一行代码&#44;都是你的名片,有没有大佬给个内推呀,谢谢啦".split(","),
+    startDelay: 300,
+    typeSpeed: 150,
+    loop: true,
+    backSpeed: 50
+  })
+} else {
+  document.getElementById("subtitle").innerHTML = '你写的每一行代码&#44;都是你的名片'
+}</script></body></html>
