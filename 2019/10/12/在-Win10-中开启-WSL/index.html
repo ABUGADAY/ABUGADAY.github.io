@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>在 Win10 中开启 WSL | Das'Blog</title><meta name="keywords" content="开发环境"><meta name="author" content="Das Feng || 冯礼达"><meta name="copyright" content="Das Feng || 冯礼达"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="介绍什么是 WSL?适用于 Linux 的 Windows 子系统（英语：Windows Subsystem for Linux，简称WSL） WSL提供了一个由微软开发的Linux兼容的内核接口（不包含Linux内核代码），然后可以在其上运行GNU用户空间，例如Ubuntu，openSUSE，SUSE Linux Enterprise Server，Debian和Kali Linux。这样的用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 Win10 中开启 WSL">
+<meta property="og:url" content="https://abugaday.github.io/2019/10/12/%E5%9C%A8-Win10-%E4%B8%AD%E5%BC%80%E5%90%AF-WSL/index.html">
+<meta property="og:site_name" content="Das&#39;Blog">
+<meta property="og:description" content="介绍什么是 WSL?适用于 Linux 的 Windows 子系统（英语：Windows Subsystem for Linux，简称WSL） WSL提供了一个由微软开发的Linux兼容的内核接口（不包含Linux内核代码），然后可以在其上运行GNU用户空间，例如Ubuntu，openSUSE，SUSE Linux Enterprise Server，Debian和Kali Linux。这样的用户">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.unsplash.com/photo-1579864795584-092b04e14e67?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80">
+<meta property="article:published_time" content="2019-10-12T08:08:15.000Z">
+<meta property="article:modified_time" content="2021-07-05T08:09:32.542Z">
+<meta property="article:author" content="Das Feng || 冯礼达">
+<meta property="article:tag" content="开发环境">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1579864795584-092b04e14e67?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80"><link rel="shortcut icon" href="/img/batman_gif_2.gif"><link rel="canonical" href="https://abugaday.github.io/2019/10/12/%E5%9C%A8-Win10-%E4%B8%AD%E5%BC%80%E5%90%AF-WSL/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Das Feng || 冯礼达","link":"链接: ","source":"来源: Das'Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '在 Win10 中开启 WSL',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2021-07-05 16:09:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/batman_gif_2.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1579864795584-092b04e14e67?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2134&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Das'Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">在 Win10 中开启 WSL</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-10-12T08:08:15.000Z" title="发表于 2019-10-12 16:08:15">2019-10-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-05T08:09:32.542Z" title="更新于 2021-07-05 16:09:32">2021-07-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">603</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="在 Win10 中开启 WSL"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="什么是-WSL"><a href="#什么是-WSL" class="headerlink" title="什么是 WSL?"></a>什么是 WSL?</h2><p><strong>适用于 Linux 的 Windows 子系统</strong>（英语：Windows Subsystem for Linux，简称<strong>WSL</strong>）</p>
+<p>WSL提供了一个由微软开发的Linux兼容的内核接口（不包含Linux内核代码），然后可以在其上运行GNU用户空间，例如Ubuntu，openSUSE，SUSE Linux Enterprise Server，Debian和Kali Linux。这样的用户空间可能包含Bash shell和命令语言，使用本机GNU/Linux命令行工具（sed，awk等），编程语言解释器（Ruby，Python等），甚至是图形应用程序（使用主机端的X窗口系统）。</p>
+<p>微软明确指出WSL面向应用程序的开发者，而不是面向桌面环境或生产服务器，建议使用虚拟机（Hyper-V或Kubernetes）和Azure来实现这些目的。</p>
+<h2 id="WSL跟虚拟机有什么区别"><a href="#WSL跟虚拟机有什么区别" class="headerlink" title="WSL跟虚拟机有什么区别?"></a>WSL跟虚拟机有什么区别?</h2><p>相对于虚拟机，Windows Subsystem for Linux 有以下优点：</p>
+<ol>
+<li><p>性能更好。</p>
+<p>由于实现更加底层，所以性能要比虚拟机好很多。</p>
+</li>
+<li><p>与 Windows 共享的文件系统。</p>
+<p>子系统是可以直接访问硬盘中的所有文件的，甚至可以执行 .exe 文件。</p>
+</li>
+</ol>
+<h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><p>安装子系统要求 Windows 10 Fall Creators Update 及之后版本，从这个版本开始，子系统才正式对外发布，之前的版本需要打开开发者选项。</p>
+<p>我们可以在设置中选择<code>系统—-关于-—Windows 规格</code>，来查看 Windows 版本号，大于 16215 就可以了：</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>WSL 的安装已经十分简单了。</p>
+<p>首先，以管理员身份打开 PowerShell 并运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</span><br></pre></td></tr></table></figure>
+
+<p>之后，在 Microsoft Store 搜索 wsl，安装想要的 Linux 分发。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs64y2o78gj30zm0rt79c.jpg" alt="img"></p>
+<p>选中后即可安装,等待安装完后点击启动即可</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>启动后，第一次需要初始化较长时间，之后会让设置一个系统的账号密码，和 Windows 的账号密码是有没有关系，的可以随便设，但遗忘不能找回，需要注意。</p>
+<p>启动后就和使用虚拟机一样的感觉：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs64y2xrsij30rl0efjrl.jpg" alt="img"></p>
+<p>从子系统中是可以直接访问 Windows 路径中的文件的，Windows 中的磁盘挂载在了 /mnt 目录下。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs64y7kp5oj30rl0efmxv.jpg" alt="img"></p>
+<h1 id="跨平台执行"><a href="#跨平台执行" class="headerlink" title="跨平台执行"></a>跨平台执行</h1><h2 id="Windows-执行bash"><a href="#Windows-执行bash" class="headerlink" title="Windows 执行bash"></a>Windows 执行bash</h2><p>在 Windows 命令行中，可以直接使用 bash:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c &quot;sudo apt-get update&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs64ybd9u9j30rl0efmxt.jpg" alt="img"></p>
+<h2 id="bash-执行-Windows"><a href="#bash-执行-Windows" class="headerlink" title="bash 执行 Windows"></a>bash 执行 Windows</h2><p>Linux 子系统中，只需在命令中加上 .exe 后缀，就可以直接执行：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs64yd7j0oj30rl0ef751.jpg" alt="img"></p>
+<h2 id="附上一张-Linux-常用命令"><a href="#附上一张-Linux-常用命令" class="headerlink" title="附上一张 Linux 常用命令"></a>附上一张 Linux 常用命令</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs64yipe30j30u01h8gsl.jpg" alt="599b9b3ca5bb7.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Das Feng || 冯礼达</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://abugaday.github.io/2019/10/12/%E5%9C%A8-Win10-%E4%B8%AD%E5%BC%80%E5%90%AF-WSL/">https://abugaday.github.io/2019/10/12/%E5%9C%A8-Win10-%E4%B8%AD%E5%BC%80%E5%90%AF-WSL/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://abugaday.github.io" target="_blank">Das'Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</a></div><div class="post_share"><div class="social-share" data-image="https://images.unsplash.com/photo-1579864795584-092b04e14e67?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2134&amp;q=80" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/weChatPay_515.jpg" target="_blank"><img class="post-qr-code-img" src="/img/weChatPay_515.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/aliPay_157.jpg" target="_blank"><img class="post-qr-code-img" src="/img/aliPay_157.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/05/04/%E4%BA%94%E5%88%86%E9%92%9F%E5%AD%A6%E4%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"><img class="prev-cover" src="https://images.unsplash.com/photo-1498094142928-340247edf22f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">五分钟学会单例模式</div></div></a></div><div class="next-post pull-right"><a href="/2019/01/26/ExtJs%203.x%20%E6%95%B4%E5%90%88Echarts%E7%9A%84Demo/"><img class="next-cover" src="https://images.unsplash.com/photo-1532153354457-5fbe1a3bb0b4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ExtJs 3.x 整合Echarts的Demo</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/batman_gif_2.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Das Feng || 冯礼达</div><div class="author-info__description">编程博客</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/abugaday"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/abugaday" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dasvenxx@gmail.com" target="_blank" title="Email"><i class="fa fa-envelope"></i></a><a class="social-icon" href="https://twitter.com/named_Das" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">🌝闭关修炼中...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-WSL"><span class="toc-number">1.1.</span> <span class="toc-text">什么是 WSL?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WSL%E8%B7%9F%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.</span> <span class="toc-text">WSL跟虚拟机有什么区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82"><span class="toc-number">1.3.</span> <span class="toc-text">系统要求</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%89%A7%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">跨平台执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-%E6%89%A7%E8%A1%8Cbash"><span class="toc-number">4.1.</span> <span class="toc-text">Windows 执行bash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bash-%E6%89%A7%E8%A1%8C-Windows"><span class="toc-number">4.2.</span> <span class="toc-text">bash 执行 Windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E4%B8%8A%E4%B8%80%E5%BC%A0-Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">4.3.</span> <span class="toc-text">附上一张 Linux 常用命令</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/06/30/Java-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%91%BD%E5%90%8D/" title="Java 中常见的命名"><img src="https://images.unsplash.com/photo-1490535004195-099bc723fa1f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2380&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 中常见的命名"/></a><div class="content"><a class="title" href="/2021/06/30/Java-%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%91%BD%E5%90%8D/" title="Java 中常见的命名">Java 中常见的命名</a><time datetime="2021-06-29T16:09:04.000Z" title="发表于 2021-06-30 00:09:04">2021-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%8D%E7%BC%80/" title="设计模式中常用的词缀"><img src="https://images.unsplash.com/photo-1498094142928-340247edf22f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式中常用的词缀"/></a><div class="content"><a class="title" href="/2021/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%8D%E7%BC%80/" title="设计模式中常用的词缀">设计模式中常用的词缀</a><time datetime="2021-06-29T16:07:42.000Z" title="发表于 2021-06-30 00:07:42">2021-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/14/Spring-AOP/" title="Spring-AOP"><img src="https://images.unsplash.com/photo-1579864795584-092b04e14e67?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2134&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring-AOP"/></a><div class="content"><a class="title" href="/2020/07/14/Spring-AOP/" title="Spring-AOP">Spring-AOP</a><time datetime="2020-07-14T14:24:59.000Z" title="发表于 2020-07-14 22:24:59">2020-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/10/Spring-IOC/" title="Spring IOC"><img src="https://images.unsplash.com/photo-1490535004195-099bc723fa1f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2380&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring IOC"/></a><div class="content"><a class="title" href="/2020/07/10/Spring-IOC/" title="Spring IOC">Spring IOC</a><time datetime="2020-07-10T04:57:01.000Z" title="发表于 2020-07-10 12:57:01">2020-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/09/Spring%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Spring"><img src="https://images.unsplash.com/photo-1544560212-77289e5ea6cd?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2100&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring"/></a><div class="content"><a class="title" href="/2020/07/09/Spring%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Spring">Spring</a><time datetime="2020-07-09T13:49:48.000Z" title="发表于 2020-07-09 21:49:48">2020-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Das Feng || 冯礼达</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '51ac63d9bd5f658bff23',
+      clientSecret: 'bd3defd1aaf91972d52146debc9b5e61ac0cd9a0',
+      repo: 'ABUGADAY.github.io',
+      owner: 'ABUGADAY',
+      admin: ['ABUGADAY'],
+      id: 'a76cc23536b724c905460333d8e6416e',
+      language: 'zh-CN',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
